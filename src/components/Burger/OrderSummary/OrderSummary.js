@@ -4,7 +4,7 @@ const orderSummary = (props) => {
     const ingredientlist  = Object.keys(props.ingredients)
                         .map((ind) => {
                             return(
-                                <li>
+                                <li key = {ind}>
                                     {ind} : {props.ingredients[ind]} 
                                 </li>
                             )

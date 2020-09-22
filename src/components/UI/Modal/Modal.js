@@ -2,7 +2,9 @@ import React from 'react'
 import Classes from './Modal.module.css';
 
 const modal = (props) => (
-    <div className ={ Classes.Modal}>
+    <div style ={{
+        transform: props.ordered ? 'translateY(0)' : 'translateY(-100VH)'
+    }} className ={ Classes.Modal}>
         {props.children}
     </div>
 )
