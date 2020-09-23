@@ -86,11 +86,17 @@ class BurgerBuilder extends Component{
         })
     }
 
+    exitPurchasingHandler = () => {
+        this.setState({
+            purchasing: false
+        })
+    }
+
 
     render(){
         return(
             <Auxiliary>
-                <Modal ordered = {this.state.purchasing}>
+                <Modal ordered = {this.state.purchasing} hideModal = {this.exitPurchasingHandler}>
                     <OrderSummary ingredients = {this.state.ingredients}/>
                 </Modal>
                 <Burger type = {this.state.ingredients}/>
