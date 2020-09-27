@@ -12,6 +12,8 @@
 @media(max-width:499px){
     .Logo{
         background-color: white;
+        margin-right: 25px;
+        border-radius: 40px;
     }
    
 }
