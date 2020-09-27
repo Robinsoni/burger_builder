@@ -9,3 +9,9 @@
     height: 110%;
     /*margin-top: 0 ;*/
 }
+@media(max-width:499px){
+    .Logo{
+        background-color: white;
+    }
+   
+}

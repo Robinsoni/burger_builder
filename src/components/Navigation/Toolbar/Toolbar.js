@@ -10,7 +10,7 @@ const toolbar = () =>{
                 <Logo/>
             </div>
             
-            <nav>
+            <nav className = {classes.DestopOnly}>
                 <NavigationItems/>
             </nav>
         </header>

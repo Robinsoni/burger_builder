@@ -20,4 +20,11 @@
 
 .Logo{
     height: 60%;
+    border-bottom: 32px;
+}
+
+@media (max-width:499px) {
+    .DestopOnly{
+        display: none;
+    }
 }
