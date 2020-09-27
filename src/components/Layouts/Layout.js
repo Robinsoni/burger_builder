@@ -7,17 +7,21 @@ import Backdrop from  '../UI/Backdrop/Backdrop'
   //console.log(Classes)
 class Layout extends Component  {
     state = {
-        showSideDrawer: true
+        showSideDrawer: false
     }
     closeSideDrawerHandler = () => {
         this.setState({showSideDrawer:false})
     }
-
+    toggleMenu = () => {
+        this.setState((prevState) => {
+            return {showSideDrawer: !prevState.showSideDrawer}
+        })
+    }
     render(){
         return(
         <Auxiliary>
             <div>
-                <Toolbar />
+                <Toolbar toggleMenu = {this.toggleMenu}/>
                 <SideDrawer show = { this.state.showSideDrawer} click = {this.closeSideDrawerHandler} />
                 
             </div>
