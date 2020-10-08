@@ -4,6 +4,8 @@ import Burger from  '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
+
+import axios from '../../axios-orders'
 const INGREDIENT_PRICES = {
     Cheese  : 0.5,
     Meat    : 1.3,
@@ -93,7 +95,23 @@ class BurgerBuilder extends Component{
     }
 
     purchaseContinueHandler = () => {
-        alert('You continue!');
+        const order = {
+            ingredients:this.state.ingredients,
+            price:this.state.totalPrice, // we should not send the price this way however 
+                                        // It is fine for testing purpouse
+            del_address:{
+                name:'Robin Soni',
+                addressLine1: 'Street1',
+                addressLine1: 'Street2',
+                city: 'City',
+                postcode:'012345',
+                mobileNo:'9876543210',
+            },
+            del_method:'Fastest'
+        }
+        axios.post('/orders.json',order)
+            .then(response => {alert('Order completed'); console.log(response)})
+            .catch(err => {alert('Error in sending the order');console.log(err)})
     }
 
 
