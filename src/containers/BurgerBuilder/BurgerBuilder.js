@@ -5,7 +5,9 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
-import axios from '../../axios-orders'
+//import axios from '../../axios-orders'
+import axios from 'axios'
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 const INGREDIENT_PRICES = {
     Cheese  : 0.5,
     Meat    : 1.3,
@@ -111,7 +113,7 @@ class BurgerBuilder extends Component{
             },
             del_method:'Fastest'
         }
-        axios.post('/orders.json',order)
+        axios.post('https://reactapp-d3bb5.firebaseio.com/orders.json',order)
             .then(response => {this.exitPurchasingHandler();this.setState({loader:false}); console.log(response)})
             .catch(err => { this.setState({loader:false}); this.exitPurchasingHandler();console.log(err)})
     }
@@ -147,4 +149,4 @@ class BurgerBuilder extends Component{
     }
 }
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder,axios);
