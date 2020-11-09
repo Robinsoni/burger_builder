@@ -99,7 +99,7 @@ class BurgerBuilder extends Component{
 
     purchaseContinueHandler = () => {
         this.setState({loader:true})
-        const order = {
+ /*        const order = {
             ingredients:this.state.ingredients,
             price:this.state.totalPrice, // we should not send the price this way however 
                                         // It is fine for testing purpouse
@@ -116,6 +116,9 @@ class BurgerBuilder extends Component{
         axios.post('https://reactapp-d3bb5.firebaseio.com/orders.json',order)
             .then(response => {this.exitPurchasingHandler();this.setState({loader:false}); console.log(response)})
             .catch(err => { this.setState({loader:false}); this.exitPurchasingHandler();console.log(err)})
+             */
+        this.props.history.push(this.props.match.url + 'checkout')
+        console.log('router Props',this.props)
     }
 
 
