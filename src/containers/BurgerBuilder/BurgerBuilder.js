@@ -98,7 +98,7 @@ class BurgerBuilder extends Component{
     }
 
     purchaseContinueHandler = () => {
-        this.setState({loader:true})
+        /* this.setState({loader:true}) */
  /*        const order = {
             ingredients:this.state.ingredients,
             price:this.state.totalPrice, // we should not send the price this way however 
@@ -117,8 +117,19 @@ class BurgerBuilder extends Component{
             .then(response => {this.exitPurchasingHandler();this.setState({loader:false}); console.log(response)})
             .catch(err => { this.setState({loader:false}); this.exitPurchasingHandler();console.log(err)})
              */
-        this.props.history.push(this.props.match.url + 'checkout')
-        console.log('router Props',this.props)
+        //const queryParam;
+        var queryParam = [];
+        Object.keys(this.state.ingredients).forEach(element => {
+            queryParam.push( encodeURIComponent(element) + '=' + encodeURIComponent(this.state.ingredients[element]))    
+        });
+        //queryParam = queryParam.replace(/^"+|"+$/g, '&');
+        //console.log()
+        //encodeURIComponent('')
+        this.props.history.push({
+            pathname:'checkout',
+            search: '?' + queryParam.join('&')
+        })
+        //console.log('router Props',this.props)
     }
 
 
