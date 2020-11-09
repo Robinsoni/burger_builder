@@ -10,9 +10,20 @@ class Checkout extends Component{
                         Bacon   :1,
                     }
     }
+
+    cancelOrderHandler = () => {
+        this.props.history.goBack();
+    }
+
+    placeOrderHandler = () => {
+        this.props.history.push(this.props.match.url + '/placeOrder');
+    }
     render(){
         return(<div >
-            <CheckoutSummary ingredients = {this.state.ingredients}/>
+            <CheckoutSummary 
+                    ingredients = {this.state.ingredients}
+                    cancelOrder = {this.cancelOrderHandler}
+                    placeOrder = {this.placeOrderHandler}/>
        </div>)
         
     }
