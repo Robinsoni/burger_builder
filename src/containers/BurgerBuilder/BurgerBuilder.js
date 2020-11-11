@@ -122,6 +122,7 @@ class BurgerBuilder extends Component{
         Object.keys(this.state.ingredients).forEach(element => {
             queryParam.push( encodeURIComponent(element) + '=' + encodeURIComponent(this.state.ingredients[element]))    
         });
+        /* queryParam.push('price='+this.state.totalPrice) */
         //queryParam = queryParam.replace(/^"+|"+$/g, '&');
         //console.log()
         //encodeURIComponent('')
@@ -150,8 +151,6 @@ class BurgerBuilder extends Component{
                 {orderSummary}
                 </Modal>
                 <Burger type = {this.state.ingredients}/>
-
-
                 <BuildControls 
                     ordered = {this.purchaseHandler}
                     purchasable={this.state.purchasable} 

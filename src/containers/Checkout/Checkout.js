@@ -6,19 +6,25 @@ import ContactData from './ContactData/ContactData';
 class Checkout extends Component{
     state = {
         ingredients : {
-                        Cheese  :2,
-                        Meat    :1,
+                        Cheese  :1,
+                        Meat    :2,
                         Salad   :3,
-                        Bacon   :1,
-                    }
+                        Bacon   :4,
+                    },
+        //price: 0
     }
-    componentDidMount(){
+    componentWillMount(){
         const query = new URLSearchParams(this.props.location.search)
         let ingredients = {};
+        let price =0;
         for(let params of query.entries()){
+            /* if(params[0] === 'price'){
+                price = params[1]
+            } */
             ingredients[params[0]] = +params[1]
-            
+
         }
+        
         this.setState({ingredients:ingredients})
         //console.log(ingredients)
     }
@@ -36,7 +42,10 @@ class Checkout extends Component{
                     ingredients = {this.state.ingredients}
                     cancelOrder = {this.cancelOrderHandler}
                     placeOrder = {this.placeOrderHandler}/>
-            <Route path = {this.props.match.path + '/contact-data'} component = {ContactData}/>
+            <Route  path = {this.props.match.path + '/contact-data'} 
+                    render = {() => (<ContactData ingredients = {this.state.ingredients} {...this.props} />)}/>
+        {/* instead of definig it as a component we want it to be rendred here
+                    wich some additional properties */}
        </div>)
         
     }

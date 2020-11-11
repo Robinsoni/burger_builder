@@ -5,7 +5,7 @@ import classes from './CheckoutSummary.css'
 const checkoutSummary = (props) => {
     
     return (
-        <div className = {classes.CheckoutSummary}style = {{width:'100%',margin:'auto'}}>
+        <div className = {classes.CheckoutSummary} style = {{width:'100%',margin:'auto'}}>
             <h1>
                 We hope it tests well
             </h1>
